@@ -3,6 +3,8 @@ import {LayoutParams} from "@/types/next";
 
 export default async function RouteLayout(props: LayoutParams<{}>) {
     return (
-        <DashboardWrapper>{props.children}</DashboardWrapper>
+        <DashboardWrapper>
+            {props.children}
+        </DashboardWrapper>
     );
 }
