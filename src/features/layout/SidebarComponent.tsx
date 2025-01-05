@@ -1,3 +1,4 @@
+import {Separator} from "@/components/ui/separator";
 import {
     Sidebar,
     SidebarContent,
@@ -8,19 +9,29 @@ import {
     SidebarMenuItem
 } from "@/components/ui/sidebar";
 import SidebarLink from "@/features/layout/SidebarLink";
-import { LayoutDashboard } from "lucide-react";
+import {LayoutDashboard, MailCheck, ShoppingBag, UsersIcon} from "lucide-react";
 
 export const SidebarComponent = () => {
     const items = [
         {
-            title: "Tableau de bord",
-            url: "/",
+            title: "Dashboard",
+            url: "/dashboard",
             icon: <LayoutDashboard />,
         },
         {
-            title: "Tableau de bord",
-            url: "/",
-            icon: <LayoutDashboard />,
+            title: "Orders",
+            url: "/orders",
+            icon: <ShoppingBag />,
+        },
+        {
+            title: "Customers",
+            url: "/customers",
+            icon: <UsersIcon />,
+        },
+        {
+            title: "Messages",
+            url: "/messages",
+            icon: <MailCheck />,
         },
     ];
 
@@ -46,7 +57,6 @@ export const SidebarComponent = () => {
                             {items.map((item) => (
                                 <SidebarMenuItem
                                     key={item.title}
-                                    className={"py-3"}
                                 >
                                     <SidebarMenuButton asChild>
                                         <SidebarLink
@@ -59,6 +69,8 @@ export const SidebarComponent = () => {
                             ))}
                         </SidebarMenu>
                     </SidebarGroupContent>
+                    
+                    <Separator className={"mt-3"} />
                 </SidebarGroup>
             </SidebarContent>
         </Sidebar>

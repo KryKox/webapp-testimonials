@@ -14,15 +14,17 @@ export const SidebarLink = ({ href, icon, label }: SidebarLinkProps) => {
     const isActive = location.startsWith('/' + href);
     
     return (
-        <Link href={href} className="text-xl">
+        <Link href={href} className="text-sm">
             <div
-                className={`cursor-pointer flex items-center rounded-lg justify-start px-4 py-2 gap-3 transition-colors ${
+                className={`cursor-pointer flex items-center rounded-lg justify-start px-4 py-2 transition-colors ${
                     isActive
                         ? "bg-gray-100 border-gray-700 text-gray-900"
                         : "hover:bg-gray-100 text-gray-700"
                 }`}
             >
-                {icon}
+                <div className={"mr-2"}>
+                    {icon}
+                </div>
                 <span
                     className={`block font-medium transition-colors ${
                         isActive ? "text-gray-900" : "text-gray-700"
