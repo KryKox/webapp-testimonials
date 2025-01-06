@@ -1,9 +1,6 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -13,10 +10,56 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id        Int     @id @default(autoincrement())
-  email     String  @unique
-  firstname String
-  lastname  String
-  premium   Boolean
+model Product {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String
+  price       Float
+  stock       Int
+  discount    Float?
+  mainImage   String
+  subImages   String[]
+
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId Int
+
+  type ProductType
+
+  shoeDetails       ShoeDetails?       @relation(fields: [shoeDetailsId], references: [id], onDelete: Cascade)
+  clothingDetails   ClothingDetails?   @relation(fields: [clothingDetailsId], references: [id], onDelete: Cascade)
+  electronicDetails ElectronicDetails? @relation(fields: [electronicDetailsId], references: [id], onDelete: Cascade)
+
+  shoeDetailsId       Int?
+  clothingDetailsId   Int?
+  electronicDetailsId Int?
+}
+
+model Category {
+  id       Int       @id @default(autoincrement())
+  name     String    @unique
+  products Product[]
+}
+
+enum ProductType {
+  SHOE
+  CLOTHING
+  ELECTRONIC
+}
+
+model ShoeDetails {
+  id      Int       @id @default(autoincrement())
+  sizes   Float[]
+  product Product[]
+}
+
+model ClothingDetails {
+  id      Int       @id @default(autoincrement())
+  sizes   String[]
+  product Product[]
+}
+
+model ElectronicDetails {
+  id      Int       @id @default(autoincrement())
+  model   String
+  product Product[]
 }
