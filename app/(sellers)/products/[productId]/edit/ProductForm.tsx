@@ -1,6 +1,6 @@
 "use client"
-
-import {Card, CardContent, CardHeader} from "@/components/ui/card";
+import {Card} from "@/components/ui/card";
+import { useState } from 'react';
 
 export type ProductFormProps = {
 };
@@ -8,10 +8,7 @@ export type ProductFormProps = {
 export const ProductForm = (props: ProductFormProps) => {
     return (
         <Card>
-            <CardHeader>
-                Create product
-            </CardHeader>
+        
         </Card>
     );
-};
-
+}

@@ -3,7 +3,7 @@ import {
     Sidebar,
     SidebarContent,
     SidebarGroup,
-    SidebarGroupContent,
+    SidebarGroupContent, SidebarGroupLabel,
     SidebarHeader,
     SidebarMenu, SidebarMenuButton,
     SidebarMenuItem
@@ -34,6 +34,14 @@ export const SidebarComponent = () => {
             icon: <MailCheck />,
         },
     ];
+    
+    const tools_items = [
+        {
+            title: "Products",
+            url: "/products",
+            icon: <ShoppingBag />
+        }
+    ]
 
     return (
         <Sidebar variant={"sidebar"}>
@@ -41,7 +49,7 @@ export const SidebarComponent = () => {
                 <div className={"flex items-center py-6 mb-6"}>
                     <img
                         width={60}
-                        src={'logo.png'}
+                        src={'/logo.png'}
                         alt={"Sphere Logo"}
                         className="pl-2"
                     />
@@ -71,6 +79,28 @@ export const SidebarComponent = () => {
                     </SidebarGroupContent>
                     
                     <Separator className={"mt-3"} />
+                    <SidebarGroupLabel className={"uppercase text-[#929DAC] text-sm mt-6"}>
+                        Tools
+                    </SidebarGroupLabel>
+                    
+                    <SidebarGroupContent>
+                        <SidebarMenu>
+                            {tools_items.map((item) => (
+                                <SidebarMenuItem
+                                    key={item.title}
+                                    className={"py-3"}
+                                >
+                                    <SidebarMenuButton asChild>
+                                        <SidebarLink
+                                            href={item.url}
+                                            icon={item.icon}
+                                            label={item.title}
+                                        />
+                                    </SidebarMenuButton>
+                                </SidebarMenuItem>
+                            ))}
+                        </SidebarMenu>
+                    </SidebarGroupContent>
                 </SidebarGroup>
             </SidebarContent>
         </Sidebar>
