@@ -1,5 +1,6 @@
 "use client"
 
+import {redirect} from "next/navigation";
 import {PropsWithChildren} from "react";
 import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from "@/components/ui/dropdown-menu";
 import {signOutAction} from "@/features/auth/auth.action";

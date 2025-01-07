@@ -1,3 +1,5 @@
+import {Toaster} from "@/components/ui/toaster";
+import {Providers} from "./Providers";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -19,7 +21,10 @@ export default function RootLayout({
       <body
         className={`${satoshi.className} antialiased`}
       >
-        {children}
+        <Providers>
+            {children}
+            <Toaster />
+        </Providers>
       </body>
     </html>
   );
