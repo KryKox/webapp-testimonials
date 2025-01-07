@@ -19,29 +19,12 @@ export const SidebarComponent = () => {
             icon: <LayoutDashboard />,
         },
         {
-            title: "Orders",
-            url: "/orders",
-            icon: <ShoppingBag />,
-        },
-        {
-            title: "Customers",
-            url: "/customers",
+            title: "Employees",
+            url: "/employees",
             icon: <UsersIcon />,
-        },
-        {
-            title: "Messages",
-            url: "/messages",
-            icon: <MailCheck />,
         },
     ];
     
-    const tools_items = [
-        {
-            title: "Products",
-            url: "/products",
-            icon: <ShoppingBag />
-        }
-    ]
 
     return (
         <Sidebar variant={"sidebar"}>
@@ -77,30 +60,7 @@ export const SidebarComponent = () => {
                             ))}
                         </SidebarMenu>
                     </SidebarGroupContent>
-                    
                     <Separator className={"mt-3"} />
-                    <SidebarGroupLabel className={"uppercase text-[#929DAC] text-sm mt-6"}>
-                        Tools
-                    </SidebarGroupLabel>
-                    
-                    <SidebarGroupContent>
-                        <SidebarMenu>
-                            {tools_items.map((item) => (
-                                <SidebarMenuItem
-                                    key={item.title}
-                                    className={"py-3"}
-                                >
-                                    <SidebarMenuButton asChild>
-                                        <SidebarLink
-                                            href={item.url}
-                                            icon={item.icon}
-                                            label={item.title}
-                                        />
-                                    </SidebarMenuButton>
-                                </SidebarMenuItem>
-                            ))}
-                        </SidebarMenu>
-                    </SidebarGroupContent>
                 </SidebarGroup>
             </SidebarContent>
         </Sidebar>
