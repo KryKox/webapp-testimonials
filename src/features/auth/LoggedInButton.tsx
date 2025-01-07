@@ -24,7 +24,8 @@ export const LoggedInButton = async () => {
                     {session.user.image ? (
                         <AvatarImage
                             src={session.user.image}
-                            alt={session.user.name} />
+                            alt={session.user.name}
+                        />
                     ) : null}
                 </Avatar>
                 <Label>{session.user.name}</Label>

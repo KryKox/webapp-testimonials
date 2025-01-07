@@ -16,8 +16,12 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
-  accounts      Account[]
-  sessions      Session[]
+
+  accounts Account[]
+  sessions Session[]
+
+  companies Company[]
+  employees Employee[]
 }
 
 model Account {
@@ -28,7 +32,7 @@ model Account {
   providerAccountId String
   refresh_token     String? // optional
   access_token      String? // optional
-  expires_at        Int?    // optional
+  expires_at        Int? // optional
   token_type        String? // optional
   scope             String? // optional
   id_token          String? // optional
@@ -54,57 +58,35 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
+model Company {
+  id             String @id @default(cuid())
+  companyName    String
+  companyAddress String
 
-model Product {
-  id          Int      @id @default(autoincrement())
-  name        String
-  description String
-  price       Float
-  stock       Int
-  discount    Float?
-  mainImage   String
-  subImages   String[]
+  companyEmployees Employee[]
 
-  category   Category @relation(fields: [categoryId], references: [id])
-  categoryId Int
-
-  type ProductType
-
-  shoeDetails       ShoeDetails?       @relation(fields: [shoeDetailsId], references: [id], onDelete: Cascade)
-  clothingDetails   ClothingDetails?   @relation(fields: [clothingDetailsId], references: [id], onDelete: Cascade)
-  electronicDetails ElectronicDetails? @relation(fields: [electronicDetailsId], references: [id], onDelete: Cascade)
-
-  shoeDetailsId       Int?
-  clothingDetailsId   Int?
-  electronicDetailsId Int?
+  companyUserOwner User   @relation(fields: [companyOwnerId], references: [id], onDelete: Cascade)
+  companyOwnerId   String
 }
 
-model Category {
-  id       Int       @id @default(autoincrement())
-  name     String    @unique
-  products Product[]
+model Employee {
+  id    Int       @id @default(autoincrement())
+  grade GradeType @default(JUNIOR)
+
+  employee   User   @relation(fields: [employeeid], references: [id], onDelete: Cascade)
+  employeeid String
+
+  companyId String
+  company   Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
 }
 
-enum ProductType {
-  SHOE
-  CLOTHING
-  ELECTRONIC
-}
-
-model ShoeDetails {
-  id      Int       @id @default(autoincrement())
-  sizes   Float[]
-  product Product[]
-}
-
-model ClothingDetails {
-  id      Int       @id @default(autoincrement())
-  sizes   String[]
-  product Product[]
-}
-
-model ElectronicDetails {
-  id      Int       @id @default(autoincrement())
-  model   String
-  product Product[]
+enum GradeType {
+  INTERN // Stagiaire
+  JUNIOR // Employé Junior
+  MID_LEVEL // Employé de niveau intermédiaire
+  SENIOR // Employé Senior
+  TEAM_LEAD // Responsable d'équipe
+  MANAGER // Manager
+  DIRECTOR // Directeur
+  EXECUTIVE // Cadre supérieur
 }
