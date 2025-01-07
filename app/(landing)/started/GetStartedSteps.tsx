@@ -14,13 +14,11 @@ export const GetStartedSteps = ({ user }: { user: User }) => {
         }
     }, [user]);
     
-    if (step === 0 && !user) {
-        return <SignInButton />;
-    }
     
     return (
-        <div>
-            {step === 1 && <GetStartedCompany user={user} />}
+        <div className={"w-full"}>
+            <h1 className={"text-3xl"}>Bienvenue à l'étape {step + 1}</h1>
+            {step === 0 && !user ? <SignInButton /> : step === 1 && <GetStartedCompany user={user} />}
         </div>
     );
 };
