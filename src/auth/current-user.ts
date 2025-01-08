@@ -13,7 +13,7 @@ export const currentUser = async () => {
 }
 
 export const requiredCurrentUser = async () => {
-    const user = await  currentUser();
+    const user = await currentUser();
 
     if (!user) {
         return null;

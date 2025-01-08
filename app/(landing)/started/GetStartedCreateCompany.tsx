@@ -12,7 +12,7 @@ export const GetStartedCreateCompany = ({ user }: User) => {
     const { toast } = useToast();
     
     const mutation = useMutation({
-        mutationFn:  () => createCompany(user.id),
+        mutationFn:  async () => await createCompany(user.id),
         onSuccess: () => {
             toast({
                 title: "Company",
