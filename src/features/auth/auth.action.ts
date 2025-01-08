@@ -9,5 +9,5 @@ export const signInAction = async () => {
 
 export const signOutAction = async () => {
     await signOut();
-    redirect('/');
+    await redirect('/');
 }

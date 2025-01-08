@@ -17,6 +17,7 @@ export const GetStartedCreateCompany = ({ user }: User) => {
             toast({
                 title: "Company",
                 description: "Your company has been created!",
+                variant: "success"
             });
             
             router.push('/dashboard');
@@ -24,8 +25,9 @@ export const GetStartedCreateCompany = ({ user }: User) => {
     });
     
     return (
-        <div>
-            Créer votre company
+        <div className={"block items-center"}>
+            Create your own company
+            
             <Button
                 onClick={() => {
                     mutation.mutate();

@@ -11,7 +11,7 @@ export const GetStartedCompany = ({ user }: { user: User }) => {
     const router = useRouter();
     
     const { data: company, isLoading, isError } = useQuery({
-        queryKey: ["company", user.id],
+        queryKey: ["company"],
         queryFn: async () => {
             return await userCompany(user);
         },
