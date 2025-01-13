@@ -7,12 +7,12 @@ export const SignInButton = () => {
     return (
         <Button
             variant="outline"
-            className="mt-12 w-full flex items-center"
+            className="w-full flex items-center"
             onClick={async () => {
                 await signInAction()
             }}
         >
-            Sign-in with Google
+            Sign-in
         </Button>
     );
 };

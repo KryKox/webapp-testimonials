@@ -5,11 +5,13 @@ import {
     SidebarGroup,
     SidebarGroupContent, SidebarGroupLabel,
     SidebarHeader,
-    SidebarMenu, SidebarMenuButton,
+    SidebarMenu, SidebarMenuAction, SidebarMenuButton,
     SidebarMenuItem
 } from "@/components/ui/sidebar";
 import SidebarLink from "@/features/layout/SidebarLink";
-import {LayoutDashboard, MailCheck, ShoppingBag, UsersIcon} from "lucide-react";
+import {WorkspaceList} from "@/features/workspaces/WorkspaceList";
+import {FolderIcon, Home, LayoutDashboard, MailCheck, Plus, ShoppingBag, UsersIcon} from "lucide-react";
+
 
 export const SidebarComponent = () => {
     const items = [
@@ -25,6 +27,8 @@ export const SidebarComponent = () => {
         },
     ];
     
+    
+ 
 
     return (
         <Sidebar variant={"sidebar"}>
@@ -46,9 +50,7 @@ export const SidebarComponent = () => {
                     <SidebarGroupContent>
                         <SidebarMenu className="py-1 px-1">
                             {items.map((item) => (
-                                <SidebarMenuItem
-                                    key={item.title}
-                                >
+                                <SidebarMenuItem key={item.title}>
                                     <SidebarMenuButton asChild>
                                         <SidebarLink
                                             href={item.url}
@@ -61,6 +63,11 @@ export const SidebarComponent = () => {
                         </SidebarMenu>
                     </SidebarGroupContent>
                     <Separator className={"mt-3"} />
+                    <SidebarGroupContent>
+                        <SidebarMenu className={"py-1 px-1"}>
+                            <WorkspaceList />
+                        </SidebarMenu>
+                    </SidebarGroupContent>
                 </SidebarGroup>
             </SidebarContent>
         </Sidebar>

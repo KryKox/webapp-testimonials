@@ -1,7 +1,6 @@
 "use server"
 
 import {signIn, signOut} from "@/auth/auth";
-import {redirect} from "next/navigation";
 
 export const signInAction = async () => {
     await signIn();
@@ -9,5 +8,4 @@ export const signInAction = async () => {
 
 export const signOutAction = async () => {
     await signOut();
-    await redirect('/');
 }
